@@ -1,0 +1,67 @@
+nav .navbar-brand
+{
+    color: lightgreen;
+    padding:10px;
+    font-size: 30px;
+    font-family: cursive;
+}
+#navbar {
+    font-size: 18px;
+}
+
+.hidden {
+    display: none;
+}
+body {
+    background-image: url("https://wallpaperset.com/w/full/3/2/3/92291.jpg");
+    background-repeat:no-repeat;
+    background-size:cover;
+    opacity: 1;
+
+}
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    filter: blur(6px);
+}
+
+.content-container {
+    position: relative;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.5); /* Adjust the opacity as per your preference */
+    padding: 20px;
+    font-size: 20px;
+}
+.table {
+    table-layout: auto;
+    font-size: 20px;
+}
+label {
+    font-weight: bold;
+}
+
+#add, #wish {
+    background-color: green;
+}
+.bio {
+    text-align: center;
+    background-color: #e3f2fd;
+    color: darkgreen;
+    font-size: 25px;
+}
+th {
+    font-size: 25px;
+}
+.page_head {
+    position: relative;
+    color: darkgreen;
+    padding-bottom: 10px;
+    font-weight: bold;
+  }
+  .navbar-item.active {
+    color: darkgreen; /* Set the desired color for the active item */
+  }

@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Movies
+{% endblock %}
+
+{% block main %}
+<h2 class="page_head">
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-border-width" viewBox="0 0 16 16">
+        <path d="M0 3.5A.5.5 0 0 1 .5 3h15a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-2zm0 5A.5.5 0 0 1 .5 8h15a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-1zm0 4a.5.5 0 0 1 .5-.5h15a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
+      </svg> Latest scores
+      </h2>
+    <form class="d-flex" role="search">
+        <input class="form-control me-2 col-md-6" id="searchInput" onkeyup="searchFunction()" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    <br>
+    <table id="myTable" class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">User</th>
+                <th scope="col">Movie</th>
+                <th scope="col">Year</th>
+                <th scope="col">Genre</th>
+                <th scope="col">Actors</th>
+                <th scope="col">Rating</th>
+                <th scope="col">Comments</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="noResultsRow" style="display: none;">
+                <td colspan="7" class="text-center">No results found</td>
+            </tr>
+            {% for rate in ratings %}
+            <tr>
+                <td>{{ rate["username"] }}</td>
+                <td><b>{{ rate["movie"] }}</b></td>
+                <td>{{ rate["year"] }}</td>
+                <td>{{ rate["genre"] }}</td>
+                <td>{{ rate["actors"] }}</td>
+                <td>{{ rate["rating"] }}</td>
+                <td>{{ rate["comments"] }}</td>
+                <td>
+                    <form action="/wish" method="post">
+                        <input type="hidden" name="seq_no" value="{{ rate['seq_no'] }}">
+                        <button class="btn btn-dark" type ="submit" id="wish">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                              </svg>
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

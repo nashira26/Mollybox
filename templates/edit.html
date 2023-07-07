@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Edit rating
+{% endblock %}
+
+{% block main %}
+{% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+    <form action="/edit" method="post">
+
+        <div class="mb-3">
+            <label for="movie" class="form-label">Movie</label>
+            <div class="col-sm-5">
+            <input autocomplete autofocus class="form-control"
+            id="movie" name="movie" placeholder="Movie" type="text" value="{{ user_rating['movie'] }}" required>
+        </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="year" class="form-label">Year</label>
+            <div class="col-sm-1">
+            <input autocomplete autofocus class="form-control"
+            id="year" name="year" placeholder="Year" type="number" value="{{ user_rating['year'] }}" max="2024" min="1900"  step="-1" required>
+        </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="genre" class="form-label">Genre</label>
+            <div class="col-sm-5">
+            <input autocomplete autofocus class="form-control"
+            id="genre" name="genre" placeholder="Genre" type="text" value="{{ user_rating['genre'] }}" required>
+        </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="actors" class="form-label">Actors</label>
+            <div class="col-sm-5">
+            <input autocomplete autofocus class="form-control"
+            id="actors" name="actors" placeholder="Actors" type="text" value="{{ user_rating['actors'] }}" required>
+        </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="rate" class="form-label">Rating out of 10</label>
+            <div class="col-sm-1">
+            <input autocomplete="off" autofocus class="form-control"
+            id="rate" name="rate" placeholder="Rate" type="number" min="0" max="10" step="-0.1" required value="{{ user_rating['rating'] }}">
+        </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="comments" class="form-label">Comments</label>
+            <div class="col-sm-10">
+            <input autocomplete="off" autofocus class="form-control"
+            id="comments" name="comments" placeholder="Comments" type="text" value="{{ user_rating['comments'] }}" required>
+        </div>
+        </div>
+
+        <div>
+        <input type="hidden" name="seq_no" value="{{ user_rating['seq_no'] }}">
+        <button class="btn btn-dark" type="submit">Update</button>
+        </div>
+    </form>
+{% endblock %}
